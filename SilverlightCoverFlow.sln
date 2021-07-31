@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverlightCoverFlow", "SilverlightCoverFlow\SilverlightCoverFlow.csproj", "{76E0CA2A-8C2B-4D80-A44B-535DD2EBF110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76E0CA2A-8C2B-4D80-A44B-535DD2EBF110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E0CA2A-8C2B-4D80-A44B-535DD2EBF110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E0CA2A-8C2B-4D80-A44B-535DD2EBF110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E0CA2A-8C2B-4D80-A44B-535DD2EBF110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="SilverlightCoverFlow.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="clr-namespace:SilverlightCoverFlow"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="800">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        
+		<TextBlock Name="textBlock1" Text="Main cover margin" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Name="textBlock2" Text="Cover space" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Name="textBlock3" Text="Skew" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        
+		
+		<TextBlock  Text="Items Visible" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Text="Opacity Decrement" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock  Text="Min Opacity" Grid.Row="4" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        
+		<TextBlock Text="Min Scaling" Grid.Column="6" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Text="Max Scaling" Grid.Column="6" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBlock Text="Scaling Decrement" Grid.Column="6" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        
+		
+		<!-- CoverFlow component -->
+		<uc:CoverFlow x:Name="coverFlow" Grid.ColumnSpan="10" d:LayoutOverrides="GridBox" Grid.RowSpan="2" />   
+		
+		<!-- Skew  Slider -->
+		<Slider Name="skewSlider" Grid.Row="4" Minimum="0" Maximum="90" Value="{Binding ElementName=coverFlow, Path=MaxSkew, Mode=TwoWay}" Grid.Column="1" />
+        <TextBlock Text="{Binding ElementName=skewSlider, Path=Value, Mode=OneWay, StringFormat='\{0:0\}'}" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+		<!-- Cover space Slider -->
+		<Slider Name="coverSpaceSlider"  Grid.Row="3" Minimum="0" Maximum="400" Value="{Binding ElementName=coverFlow, Path=CoverSpacing, Mode=TwoWay}" Grid.Column="1" />
+        <TextBlock Text="{Binding ElementName=coverSpaceSlider, Path=Value, Mode=OneWay, StringFormat='\{0:0\}'}" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+		<!-- Cover margin Slider -->
+		<Slider Name="coverMarginSlider"  Grid.Row="2" Minimum="0" Maximum="400" Value="{Binding ElementName=coverFlow, Path=MainCoverMargin, Mode=TwoWay}" Grid.Column="1" />
+        <TextBlock Text="{Binding ElementName=coverMarginSlider, Path=Value, Mode=OneWay, StringFormat='\{0:0\}'}" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+		<Slider Name="minOpacitySlider" Grid.Row="4" Minimum="0" Maximum="1" Value="{Binding MinOpacity, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="4"  />
+        <TextBlock Text="{Binding Value, ElementName=minOpacitySlider, Mode=OneWay, StringFormat='\{0:0.0\}'}" Grid.Row="4" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+		<Slider Name="opacityDecrementSlider" Grid.Row="3" Minimum="0" Maximum="1" Value="{Binding OpacityDecrement, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="4"  />
+        <TextBlock Text="{Binding Value, ElementName=opacityDecrementSlider, Mode=OneWay, StringFormat='\{0:0.0\}'}" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+		<Slider Name="maxVisibleSlider" Grid.Row="2" Minimum="0" Maximum="24" Value="{Binding MaxVisible, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="4"  />
+		<TextBlock Text="{Binding Value, ElementName=maxVisibleSlider, Mode=OneWay, StringFormat='\{0:0\}'}" Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+		
+        <Slider x:Name="minScalingSlider" Grid.Row="2" Minimum="0" Maximum="1" Value="{Binding MinScaling, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="7"  />
+		<TextBlock Text="{Binding Value, ElementName=minScalingSlider, Mode=OneWay, StringFormat=\{0:0.0\}}" Grid.Row="2" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+		<Slider x:Name="maxScalingSlider" Grid.Row="3" Minimum="{Binding Value, ElementName=minScalingSlider, Mode=OneWay}" Maximum="1" Value="{Binding MaxScaling, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="7"  />
+		<TextBlock Text="{Binding Value, ElementName=maxScalingSlider, Mode=OneWay, StringFormat=\{0:0.0\}}" Grid.Row="3" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+		
+        <Slider x:Name="decScalingSlider" Grid.Row="4" Minimum="0" Maximum="0.5" Value="{Binding ScalingDecrement, ElementName=coverFlow, Mode=TwoWay}" Grid.Column="7"  />
+		<TextBlock Text="{Binding Value, ElementName=decScalingSlider, Mode=OneWay, StringFormat=\{0:0.0\}}" Grid.Row="4" Grid.Column="8" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        
+        
+        <Slider Grid.ColumnSpan="10" Grid.Row="1" Name="slider1" Minimum="0" Maximum="24" SmallChange="1" ValueChanged="slider1_ValueChanged"     />
+    </Grid>
+</UserControl>
